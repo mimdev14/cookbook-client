@@ -58,14 +58,14 @@ export default function Navbar() {
         {/* Authentication */}
         <div className="hidden items-center gap-3 md:flex">
           <Link
-            href="/login"
+            href="/auth/login"
             className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-orange-500"
           >
             Sign In
           </Link>
 
           <Link
-            href="/register"
+            href="/auth/register"
             className="rounded-lg bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-orange-600 hover:shadow-md"
           >
             Get Started
