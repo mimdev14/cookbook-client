@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== "production") {
   globalForMongo._mongoClient = client;
 }
 
-const db = client.db(process.env.MONGODB_DB || "job-nest");
+const db = client.db(process.env.MONGODB_DB || "recipehub");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, {
@@ -35,5 +35,17 @@ export const auth = betterAuth({
   },
   // Must be the last plugin -- lets Better Auth set session cookies
   // from within Next.js server actions / route handlers.
+
+    user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        defaultValue: "user",
+        input: false,
+      },
+    },
+  },
+
+
   plugins: [nextCookies()],
 });

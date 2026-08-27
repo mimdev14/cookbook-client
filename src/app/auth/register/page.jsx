@@ -52,10 +52,6 @@ export default function RegisterPage() {
       return;
     }
 
-    if (!photoURL) {
-      setError("Please enter a photo URL.");
-      return;
-    }
 
     const passwordIssues = getPasswordIssues(password || "");
 
@@ -71,7 +67,7 @@ export default function RegisterPage() {
         name,
         email,
         password,
-        image: photoURL,
+        image: photoURL || undefined,
       });
 
       if (error) {
@@ -81,9 +77,9 @@ export default function RegisterPage() {
         return;
       }
 
-      toast.success("Registration successful! Please login.");
-
-      router.push("/auth/login");
+     toast.success("Welcome to RecipeHub! 🎉");
+router.push("/");
+router.refresh();
     } catch (error) {
       setError("Something went wrong. Please try again.");
     } finally {
