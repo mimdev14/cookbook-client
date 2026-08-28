@@ -1,43 +1,39 @@
 "use client";
 
-import { useSession } from "@/lib/auth-client";
+import { useEffect, useState } from "react";
+import { apiFetch } from "@/lib/api";
 
-export default function DashboardPage() {
-  const { data: session, isPending } = useSession();
+export default function DashboardOverviewPage() {
+  const [stats, setStats] = useState(null);
 
-  if (isPending) {
-    return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-orange-500" />
-      </div>
-    );
-  }
-
-  if (!session?.user) {
-    return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <p className="text-sm text-gray-500">
-          Please login to access your dashboard.
-        </p>
-      </div>
-    );
-  }
+  useEffect(() => {
+    apiFetch("/api/users/me/stats").then((data) => setStats(data.stats)).catch(() => setStats(null));
+  }, []);
 
   return (
-    <section className="py-8">
-      <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
-        <p className="text-sm font-medium text-orange-500">
-          Welcome back
-        </p>
+    <div>
+      <h1 className="text-3xl font-bold text-black">Dashboard Overview</h1>
 
-        <h1 className="mt-2 text-3xl font-bold text-gray-900">
-          {session.user.name || "User"}
-        </h1>
+      {stats?.isPremium && (
+        <span className="mt-3 inline-block rounded-full bg-black px-4 py-1.5 text-xs font-semibold text-white">
+          ⭐ Premium Member
+        </span>
+      )}
 
-        <p className="mt-2 text-gray-500">
-          This is your RecipeHub dashboard.
-        </p>
+      <div className="mt-8 grid gap-6 sm:grid-cols-3">
+        <div className="rounded-2xl border border-gray-200 p-6">
+          <p className="text-sm text-gray-500">Total Recipes</p>
+          <p className="mt-2 text-3xl font-bold text-black">{stats?.totalRecipes ?? "-"}</p>
+        </div>
+        <div className="rounded-2xl border border-gray-200 p-6">
+          <p className="text-sm text-gray-500">Total Favorites</p>
+          <p className="mt-2 text-3xl font-bold text-black">{stats?.totalFavorites ?? "-"}</p>
+        </div>
+        <div className="rounded-2xl border border-gray-200 p-6">
+          <p className="text-sm text-gray-500">Likes Received</p>
+          <p className="mt-2 text-3xl font-bold text-black">{stats?.totalLikesReceived ?? "-"}</p>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
