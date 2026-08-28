@@ -95,7 +95,7 @@ router.refresh();
 
       await signIn.social({
         provider: "google",
-        callbackURL: "/",
+        callbackURL: `${window.location.origin}/`,
       });
     } catch (error) {
       setError("Google sign-up failed. Please try again.");

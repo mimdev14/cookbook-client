@@ -61,7 +61,7 @@ export default function LoginPage() {
 
       await signIn.social({
         provider: "google",
-        callbackURL: "/",
+        callbackURL: `${window.location.origin}/`,
       });
     } catch (error) {
       setError("Unable to continue with Google. Please try again.");
