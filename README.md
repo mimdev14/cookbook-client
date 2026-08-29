@@ -8,9 +8,9 @@ The platform supports regular users, premium members, and administrators with ro
 
 ## 🌐 Live Project
 
-**Live Site:** [YOUR_LIVE_CLIENT_URL](https://recipehub-client-gilt.vercel.app)
+**Live Site:** [LIVE_CLIENT_URL](https://recipehub-client-gilt.vercel.app)
 
-**Server API:** [YOUR_LIVE_SERVER_URL](https://recipehub-server-eight.vercel.app)
+**Server API:** [LIVE_SERVER_URL](https://recipehub-server-eight.vercel.app)
 
 ---
 
