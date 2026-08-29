@@ -8,47 +8,33 @@ export async function POST() {
     });
 
     if (!session) {
-      return Response.json(
-        {
-          success: false,
-          message: "Unauthorized",
-        },
-        { status: 401 }
-      );
+      return Response.json({ success: false, message: "Unauthorized" }, { status: 401 });
     }
 
     const user = session.user;
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/users/sync`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          authUserId: user.id,
-          name: user.name,
-          email: user.email,
-          image: user.image || "",
-        }),
-      }
-    );
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/sync`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        authUserId: user.id,
+        name: user.name,
+        email: user.email,
+        image: user.image || "",
+      }),
+    });
 
     const data = await response.json();
+    const res = Response.json(data, { status: response.status });
 
-    return Response.json(data, {
-      status: response.status,
-    });
+    const setCookie = response.headers.get("set-cookie");
+    if (setCookie) {
+      res.headers.set("set-cookie", setCookie);
+    }
+
+    return res;
   } catch (error) {
     console.error("User sync failed:", error);
-
-    return Response.json(
-      {
-        success: false,
-        message: "Failed to synchronize user",
-      },
-      { status: 500 }
-    );
+    return Response.json({ success: false, message: "Failed to synchronize user" }, { status: 500 });
   }
 }
