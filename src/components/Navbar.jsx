@@ -1,6 +1,5 @@
 "use client";
-import { useEffect } from "react";
-import { apiFetch } from "@/lib/api";
+
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -32,15 +31,7 @@ export default function Navbar() {
     user?.email?.charAt(0)?.toUpperCase() ||
     "U";
 
-    const [role, setRole] = useState(null);
-
-useEffect(() => {
-  if (user) {
-    apiFetch("/api/users/me").then((data) => setRole(data.user.role)).catch(() => setRole(null));
-  } else {
-    setRole(null);
-  }
-}, [user?.id]);
+    
 
   return (
     <motion.header
@@ -108,14 +99,8 @@ useEffect(() => {
                 Dashboard
               </Link>
 
-              {role === "admin" && (
-                <Link
-                  href="/admin"
-                  className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-orange-500"
-                >
-                  Admin
-                </Link>
-              )}
+             
+           
               {/* User Profile */}
               <div className="flex items-center gap-3 border-l border-gray-200 pl-3">
                 <div className="flex items-center gap-2">

@@ -1,76 +1,37 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { toast } from "sonner";
 import { apiFetch } from "@/lib/api";
 
-export default function ManageRecipesPage() {
-  const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(true);
+export default function AdminOverviewPage() {
+  const [stats, setStats] = useState(null);
 
-  const load = () => {
-    apiFetch("/api/recipes/admin/all").then((data) => setRecipes(data.recipes)).catch(() => setRecipes([])).finally(() => setLoading(false));
-  };
+  useEffect(() => {
+    apiFetch("/api/users/admin/stats").then((data) => setStats(data.stats)).catch(() => setStats(null));
+  }, []);
 
-  useEffect(() => { load(); }, []);
-
-  const toggleFeature = async (id) => {
-    try {
-      await apiFetch(`/api/recipes/admin/${id}/feature`, { method: "PATCH" });
-      load();
-    } catch (err) {
-      toast.error(err.message || "Failed to update");
-    }
-  };
-
-  const handleDelete = async (id) => {
-    if (!confirm("Delete this recipe?")) return;
-    try {
-      await apiFetch(`/api/recipes/${id}`, { method: "DELETE" });
-      toast.success("Recipe deleted");
-      setRecipes((prev) => prev.filter((r) => r._id !== id));
-    } catch (err) {
-      toast.error(err.message || "Failed to delete");
-    }
-  };
-
-  if (loading) return <p className="text-center text-gray-500">Loading...</p>;
+  const cards = [
+    { label: "Total Users", value: stats?.totalUsers, icon: "👥" },
+    { label: "Total Recipes", value: stats?.totalRecipes, icon: "🍳" },
+    { label: "Premium Members", value: stats?.totalPremium, icon: "⭐" },
+    { label: "Pending Reports", value: stats?.totalReports, icon: "🚩" },
+  ];
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-black">Manage Recipes</h1>
-      <div className="mt-8 overflow-x-auto rounded-2xl border border-gray-200">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-gray-50 text-gray-600">
-            <tr>
-              <th className="px-4 py-3">Name</th>
-              <th className="px-4 py-3">Author</th>
-              <th className="px-4 py-3">Category</th>
-              <th className="px-4 py-3">Featured</th>
-              <th className="px-4 py-3">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {recipes.map((r) => (
-              <tr key={r._id} className="border-t border-gray-100">
-                <td className="px-4 py-3">{r.recipeName}</td>
-                <td className="px-4 py-3">{r.authorName}</td>
-                <td className="px-4 py-3">{r.category}</td>
-                <td className="px-4 py-3">
-                  <button onClick={() => toggleFeature(r._id)}
-                    className={`rounded-full px-2.5 py-1 text-xs font-semibold ${r.isFeatured ? "bg-black text-white" : "bg-gray-100 text-gray-600"}`}>
-                    {r.isFeatured ? "Featured" : "Feature"}
-                  </button>
-                </td>
-                <td className="px-4 py-3">
-                  <button onClick={() => handleDelete(r._id)} className="rounded-lg border border-red-200 px-3 py-1.5 text-xs font-semibold text-red-600 hover:bg-red-50">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <h1 className="text-3xl font-bold text-black">Admin Overview</h1>
+      <p className="mt-2 text-sm text-gray-500">A snapshot of what's happening on RecipeHub.</p>
+
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {cards.map((c) => (
+          <div key={c.label} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-100 text-lg">
+              {c.icon}
+            </div>
+            <p className="mt-4 text-sm text-gray-500">{c.label}</p>
+            <p className="mt-1 text-3xl font-bold text-black">{c.value ?? "-"}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

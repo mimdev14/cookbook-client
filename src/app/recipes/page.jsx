@@ -1,14 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import RecipeCard from "@/components/RecipeCard";
 import { apiFetch } from "@/lib/api";
 import { CATEGORIES } from "@/lib/constants";
 
 export default function BrowseRecipesPage() {
+  const searchParams = useSearchParams();
+  const initialCategory = searchParams.get("category");
+
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(initialCategory ? [initialCategory] : []);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -53,7 +57,7 @@ export default function BrowseRecipesPage() {
             key={c}
             onClick={() => toggleCategory(c)}
             className={`rounded-lg border px-3 py-2 text-sm ${
-              categories.includes(c) ? "border-black bg-black text-white" : "border-gray-300 text-black"
+              categories.includes(c) ? "border-orange-500 bg-orange-500 text-white" : "border-gray-300 text-black"
             }`}
           >
             {c}

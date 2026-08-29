@@ -49,12 +49,15 @@ export default function ReportsPage() {
       {reports.length === 0 ? (
         <p className="mt-10 text-center text-gray-500">No pending reports.</p>
       ) : (
-        <div className="mt-8 flex flex-col gap-4">
+               <div className="mt-8 flex flex-col gap-4">
           {reports.map((r) => (
-            <div key={r._id} className="flex items-center justify-between rounded-2xl border border-gray-200 p-5">
-              <div>
-                <p className="text-sm font-semibold text-black">{r.reason}</p>
-                <p className="mt-1 text-xs text-gray-500">Reported by {r.reporterEmail}</p>
+            <div key={r._id} className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+              <div className="flex items-start gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-red-100 text-sm">🚩</div>
+                <div>
+                  <p className="text-sm font-semibold text-black">{r.reason}</p>
+                  <p className="mt-1 text-xs text-gray-500">Reported by {r.reporterEmail}</p>
+                </div>
               </div>
               <div className="flex gap-3">
                 <button onClick={() => dismiss(r._id)} className="rounded-lg border border-gray-300 px-3 py-1.5 text-xs font-semibold hover:bg-gray-50">

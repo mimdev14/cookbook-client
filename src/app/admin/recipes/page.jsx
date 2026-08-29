@@ -46,30 +46,32 @@ export default function ManageRecipesPage() {
   return (
     <div>
       <h1 className="text-3xl font-bold text-black">Manage Recipes</h1>
-      <div className="mt-8 overflow-x-auto rounded-2xl border border-gray-200">
+            <div className="mt-8 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
         <table className="w-full text-left text-sm">
-          <thead className="bg-gray-50 text-gray-600">
+          <thead className="bg-orange-50 text-gray-700">
             <tr>
-              <th className="px-4 py-3">Name</th>
-              <th className="px-4 py-3">Author</th>
-              <th className="px-4 py-3">Category</th>
-              <th className="px-4 py-3">Featured</th>
-              <th className="px-4 py-3">Action</th>
+              <th className="px-5 py-3.5 font-semibold">Name</th>
+              <th className="px-5 py-3.5 font-semibold">Author</th>
+              <th className="px-5 py-3.5 font-semibold">Category</th>
+              <th className="px-5 py-3.5 font-semibold">Featured</th>
+              <th className="px-5 py-3.5 font-semibold">Action</th>
             </tr>
           </thead>
           <tbody>
             {recipes.map((r) => (
-              <tr key={r._id} className="border-t border-gray-100">
-                <td className="px-4 py-3">{r.recipeName}</td>
-                <td className="px-4 py-3">{r.authorName}</td>
-                <td className="px-4 py-3">{r.category}</td>
-                <td className="px-4 py-3">
+              <tr key={r._id} className="border-t border-gray-100 hover:bg-gray-50">
+                <td className="px-5 py-3.5">{r.recipeName}</td>
+                <td className="px-5 py-3.5 text-gray-500">{r.authorName}</td>
+                <td className="px-5 py-3.5">
+                  <span className="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600">{r.category}</span>
+                </td>
+                <td className="px-5 py-3.5">
                   <button onClick={() => toggleFeature(r._id)}
-                    className={`rounded-full px-2.5 py-1 text-xs font-semibold ${r.isFeatured ? "bg-black text-white" : "bg-gray-100 text-gray-600"}`}>
-                    {r.isFeatured ? "Featured" : "Feature"}
+                    className={`rounded-full px-2.5 py-1 text-xs font-semibold ${r.isFeatured ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-600 hover:bg-orange-100"}`}>
+                    {r.isFeatured ? "★ Featured" : "Feature"}
                   </button>
                 </td>
-                <td className="px-4 py-3">
+                <td className="px-5 py-3.5">
                   <button onClick={() => setDeleteTarget(r._id)} className="rounded-lg border border-red-200 px-3 py-1.5 text-xs font-semibold text-red-600 hover:bg-red-50">
                     Delete
                   </button>
