@@ -5,10 +5,13 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { apiFetch } from "@/lib/api";
 import RecipeCard from "@/components/RecipeCard";
+import ConfirmModal from "@/components/ConfirmModal";
 
 export default function MyRecipesPage() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [deleteTarget, setDeleteTarget] = useState(null);
+  const [deleting, setDeleting] = useState(false);
 
   const load = () => {
     apiFetch("/api/recipes/mine/list")
@@ -19,14 +22,17 @@ export default function MyRecipesPage() {
 
   useEffect(() => { load(); }, []);
 
-  const handleDelete = async (id) => {
-    if (!confirm("Delete this recipe?")) return;
+  const handleDelete = async () => {
+    setDeleting(true);
     try {
-      await apiFetch(`/api/recipes/${id}`, { method: "DELETE" });
+      await apiFetch(`/api/recipes/${deleteTarget}`, { method: "DELETE" });
       toast.success("Recipe deleted");
-      setRecipes((prev) => prev.filter((r) => r._id !== id));
+      setRecipes((prev) => prev.filter((r) => r._id !== deleteTarget));
+      setDeleteTarget(null);
     } catch (err) {
       toast.error(err.message || "Failed to delete");
+    } finally {
+      setDeleting(false);
     }
   };
 
@@ -48,16 +54,33 @@ export default function MyRecipesPage() {
           {recipes.map((r) => (
             <div key={r._id} className="relative">
               <RecipeCard recipe={r} />
-              <button
-                onClick={() => handleDelete(r._id)}
-                className="absolute right-3 top-3 rounded-lg bg-red-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-red-700"
-              >
-                Delete
-              </button>
+              <div className="absolute right-3 top-3 flex gap-2">
+                <Link
+                  href={`/dashboard/my-recipes/${r._id}/edit`}
+                  className="rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-gray-900 shadow hover:bg-gray-50"
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => setDeleteTarget(r._id)}
+                  className="rounded-lg bg-red-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-red-700"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>
       )}
+
+      <ConfirmModal
+        open={!!deleteTarget}
+        title="Delete this recipe?"
+        message="This action cannot be undone."
+        onCancel={() => setDeleteTarget(null)}
+        onConfirm={handleDelete}
+        loading={deleting}
+      />
     </div>
   );
 }
