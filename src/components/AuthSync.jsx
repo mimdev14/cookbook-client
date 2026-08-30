@@ -9,7 +9,7 @@ export default function AuthSync() {
 
   useEffect(() => {
     if (session?.user) {
-      syncUser();
+      syncUser(session.user);
     }
   }, [session?.user?.id]);
 
