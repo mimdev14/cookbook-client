@@ -54,7 +54,7 @@ export default function FeaturedRecipes() {
 
             <p className="mt-4 text-gray-600">
               Discover handpicked recipes selected by our community and
-              featured by RecipeHub.
+              featured by CookBook.
             </p>
           </div>
 

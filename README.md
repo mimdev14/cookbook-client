@@ -1,6 +1,6 @@
-# 🍳 RecipeHub — Recipe Sharing Platform
+# 🍳 CookBook — Recipe Sharing Platform
 
-RecipeHub is a full-stack recipe-sharing platform where food enthusiasts can discover, share, save, purchase, and manage recipes.
+CookBook is a full-stack recipe-sharing platform where food enthusiasts can discover, share, save, purchase, and manage recipes.
 
 The platform supports regular users, premium members, and administrators with role-based access and dedicated dashboards.
 
@@ -8,9 +8,9 @@ The platform supports regular users, premium members, and administrators with ro
 
 ## 🌐 Live Project
 
-**Live Site:** [LIVE_CLIENT_URL](https://recipehub-client-gilt.vercel.app)
+**Live Site:** [LIVE_CLIENT_URL](https://cookbook-client-gilt.vercel.app)
 
-**Server API:** [LIVE_SERVER_URL](https://recipehub-server-eight.vercel.app)
+**Server API:** [LIVE_SERVER_URL](https://cookbook-server-eight.vercel.app)
 
 ---
 
@@ -115,7 +115,7 @@ The platform supports regular users, premium members, and administrators with ro
 ## 📂 Project Structure
 
 ```text
-recipehub-client/
+cookbook-client/
 │
 ├── app/
 │   ├── page.jsx

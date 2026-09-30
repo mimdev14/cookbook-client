@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== "production") {
   globalForMongo._mongoClient = client;
 }
 
-const db = client.db(process.env.MONGODB_DB || "recipehub");
+const db = client.db(process.env.MONGODB_DB || "cookbook");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, {

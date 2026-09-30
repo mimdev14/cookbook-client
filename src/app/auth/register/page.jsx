@@ -77,7 +77,7 @@ export default function RegisterPage() {
         return;
       }
 
-     toast.success("Welcome to RecipeHub! 🎉");
+     toast.success("Welcome to CookBook! 🎉");
 router.push("/");
 router.refresh();
     } catch (error) {
@@ -140,7 +140,7 @@ router.refresh();
               </h2>
 
               <p className="mt-4 text-sm leading-6 text-white/85">
-                Join RecipeHub and discover new flavors, save your favorite
+                Join CookBook and discover new flavors, save your favorite
                 recipes, and share your own culinary creations.
               </p>
             </div>
@@ -169,7 +169,7 @@ router.refresh();
             {/* Header */}
             <div>
               <span className="text-xs font-semibold uppercase tracking-wider text-orange-500">
-                Join RecipeHub
+                Join CookBook
               </span>
 
               <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900">
@@ -338,7 +338,7 @@ router.refresh();
 
             {/* Bottom note */}
             <p className="mt-6 text-center text-xs leading-5 text-gray-400">
-              By creating an account, you agree to RecipeHub's terms and
+              By creating an account, you agree to CookBook's terms and
               privacy policy.
             </p>
           </div>

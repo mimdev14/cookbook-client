@@ -49,7 +49,7 @@ export default function Navbar() {
           href="/"
           className="text-2xl font-bold tracking-tight text-gray-900"
         >
-          Recipe<span className="text-orange-500">Hub</span>
+          Cook<span className="text-orange-500">Book</span>
         </Link>
 
         {/* Navigation Links */}

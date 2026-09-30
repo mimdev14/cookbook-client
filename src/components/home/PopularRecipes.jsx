@@ -54,7 +54,7 @@ export default function PopularRecipes() {
 
             <p className="mt-4 text-gray-600">
               Explore the recipes that are getting the most love from
-              RecipeHub members.
+              CookBook members.
             </p>
           </div>
 

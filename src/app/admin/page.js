@@ -20,7 +20,7 @@ export default function AdminOverviewPage() {
   return (
     <div>
       <h1 className="text-3xl font-bold text-black">Admin Overview</h1>
-      <p className="mt-2 text-sm text-gray-500">A snapshot of what's happening on RecipeHub.</p>
+      <p className="mt-2 text-sm text-gray-500">A snapshot of what's happening on CookBook.</p>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((c) => (

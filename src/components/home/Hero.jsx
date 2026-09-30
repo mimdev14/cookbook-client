@@ -126,7 +126,7 @@ export default function Hero() {
                       {recipe.title}
                     </p>
                     <p className="mt-1 text-sm text-white/80">
-                      Discover this recipe on RecipeHub
+                      Discover this recipe on CookBook
                     </p>
                   </div>
                 </div>

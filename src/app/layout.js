@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "RecipeHub",
-  description: "Discover, share, and explore delicious recipes with RecipeHub.",
+  title: "CookBook",
+  description: "Discover, share, and explore delicious recipes with CookBook.",
 };
 
 export default function RootLayout({ children }) {

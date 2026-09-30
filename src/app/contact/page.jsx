@@ -7,7 +7,7 @@ export default function ContactPage() {
       </p>
 
       <div className="mt-8 space-y-3 text-sm text-gray-700">
-        <p><strong>Email:</strong> hello@recipehub.com</p>
+        <p><strong>Email:</strong> hello@cookbook.com</p>
         <p><strong>Phone:</strong> +880 1234-567890</p>
         <p><strong>Address:</strong> Dhaka, Bangladesh</p>
       </div>

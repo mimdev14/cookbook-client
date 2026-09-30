@@ -135,7 +135,7 @@ export default function LoginPage() {
               </span>
 
               <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900">
-                Sign in to RecipeHub
+                Sign in to CookBook
               </h1>
 
               <p className="mt-2 text-sm leading-6 text-gray-500">
@@ -260,7 +260,7 @@ export default function LoginPage() {
 
             {/* Bottom note */}
             <p className="mt-6 text-center text-xs leading-5 text-gray-400">
-              By continuing, you agree to RecipeHub's terms and privacy
+              By continuing, you agree to CookBook's terms and privacy
               policy.
             </p>
           </div>

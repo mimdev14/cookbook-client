@@ -24,7 +24,7 @@ export default function RecipeDetailsPage() {
   }, [id]);
 
   useEffect(() => {
-    if (recipe) document.title = `RecipeHub – ${recipe.recipeName}`;
+    if (recipe) document.title = `CookBook – ${recipe.recipeName}`;
   }, [recipe]);
 
   const handleLike = async () => {

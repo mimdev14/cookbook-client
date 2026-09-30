@@ -137,7 +137,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-10 border-t border-gray-800 pt-6">
           <p className="text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} RecipeHub. All rights reserved.
+            © {new Date().getFullYear()} CookBook. All rights reserved.
           </p>
         </div>
       </div>

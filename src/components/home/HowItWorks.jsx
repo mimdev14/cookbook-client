@@ -19,7 +19,7 @@ const steps = [
     id: 3,
     title: "Share",
     description:
-      "Create your own recipes and share your favorite dishes with the RecipeHub community.",
+      "Create your own recipes and share your favorite dishes with the CookBook community.",
     icon: Share2,
   },
 ];
@@ -39,7 +39,7 @@ export default function HowItWorks() {
           </h2>
 
           <p className="mt-4 text-gray-600">
-            RecipeHub makes discovering, cooking, and sharing recipes simple.
+            CookBook makes discovering, cooking, and sharing recipes simple.
           </p>
         </div>
 
