@@ -10,7 +10,7 @@ Live site: https://recipehub-client-gilt.vercel.app
 
 Server repository: https://github.com/mimdev14/recipehub_server.git
 
-RecipeHub is a full-stack platform where food enthusiasts can create, share, discover, and manage recipes — with community features like likes, favorites, and reporting.
+CookBook is a full-stack platform where food enthusiasts can create, share, discover, and manage recipes — with community features like likes, favorites, and reporting.
 
 - 🔐 Secure authentication with Better Auth (email/password + Google OAuth), backed by a custom JWT stored in an HTTP-only cookie for API access
 - 🍳 Full recipe management — create, edit, and delete your own recipes, with a 2-recipe limit for free accounts
