@@ -158,10 +158,8 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="font-medium text-gray-300 transition-colors hover:text-orange-500"
             >
-              Mim
+              Fatema Akter Mim
             </a>
-            <span className="mx-1 text-orange-500">♥</span>
-            with care.
           </p>
         </div>
       </div>
