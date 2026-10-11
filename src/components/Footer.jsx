@@ -1,17 +1,34 @@
+
 import Link from "next/link";
+
+const socialLinks = [
+  {
+    name: "GitHub",
+    href: "https://github.com/mimdev14",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/fatemaaktermim/",
+  },
+  {
+  name: "Email",
+  href: "https://mail.google.com/mail/?view=cm&fs=1&to=fatemaaktermim1031@gmail.com",
+},
+];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-gray-950 text-gray-300">
+    <footer className="border-t border-gray-800 bg-gray-950 text-gray-300">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+
           {/* Brand */}
           <div>
             <Link
               href="/"
               className="text-2xl font-bold tracking-tight text-white"
             >
-              Recipe<span className="text-orange-500">Hub</span>
+              Cook<span className="text-orange-500">Book</span>
             </Link>
 
             <p className="mt-4 max-w-sm text-sm leading-6 text-gray-400">
@@ -35,7 +52,6 @@ export default function Footer() {
                   Browse Recipes
                 </Link>
               </li>
-
               <li>
                 <Link
                   href="/categories"
@@ -44,7 +60,6 @@ export default function Footer() {
                   Categories
                 </Link>
               </li>
-
               <li>
                 <Link
                   href="/popular"
@@ -71,7 +86,6 @@ export default function Footer() {
                   About Us
                 </Link>
               </li>
-
               <li>
                 <Link
                   href="/contact"
@@ -80,7 +94,6 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
-
               <li>
                 <Link
                   href="/privacy"
@@ -92,52 +105,63 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social */}
+          {/* Developer Introduction */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-              Follow Us
+              Meet the Developer
             </h3>
 
-            <div className="mt-4 flex items-center gap-3">
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-700 text-sm transition-all hover:border-orange-500 hover:bg-orange-500 hover:text-white"
-              >
-                f
-              </a>
+            <p className="mt-4 text-lg font-semibold text-white">
+              Fatema Akter Mim
+            </p>
 
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-700 text-sm transition-all hover:border-orange-500 hover:bg-orange-500 hover:text-white"
-              >
-                ◎
-              </a>
+            <p className="mt-2 text-sm leading-6 text-gray-400">
+              Full-Stack Web Developer building modern, user-friendly web
+              applications with a focus on thoughtful design and practical
+              solutions.
+            </p>
 
-              <a
-                href="#"
-                aria-label="X"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-700 text-sm transition-all hover:border-orange-500 hover:bg-orange-500 hover:text-white"
-              >
-                𝕏
-              </a>
-
-              <a
-                href="#"
-                aria-label="YouTube"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-700 text-sm transition-all hover:border-orange-500 hover:bg-orange-500 hover:text-white"
-              >
-                ▶
-              </a>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target={
+                    social.name === "Email" ? undefined : "_blank"
+                  }
+                  rel={
+                    social.name === "Email"
+                      ? undefined
+                      : "noopener noreferrer"
+                  }
+                  aria-label={social.name}
+                  className="rounded-full border border-gray-700 px-4 py-2 text-sm transition-all duration-300 hover:border-orange-500 hover:bg-orange-500 hover:text-white"
+                >
+                  {social.name}
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-10 border-t border-gray-800 pt-6">
-          <p className="text-center text-sm text-gray-500">
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-gray-800 pt-6 text-center sm:flex-row sm:text-left">
+          <p className="text-sm text-gray-500">
             © {new Date().getFullYear()} CookBook. All rights reserved.
+          </p>
+
+          <p className="text-sm text-gray-500">
+            Designed & developed by{" "}
+            <a
+              href="https://github.com/mimdev14"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-gray-300 transition-colors hover:text-orange-500"
+            >
+              Mim
+            </a>
+            <span className="mx-1 text-orange-500">♥</span>
+            with care.
           </p>
         </div>
       </div>
