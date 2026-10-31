@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 🍳 CookBook — Recipe Sharing Platform
 
 CookBook is a full-stack recipe-sharing platform where food enthusiasts can discover, share, save, purchase, and manage recipes.
