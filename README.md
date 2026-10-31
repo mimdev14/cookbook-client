@@ -6,7 +6,6 @@ CookBook is a full-stack recipe-sharing platform where food enthusiasts can disc
 # RecipeHub — Recipe Sharing Platform
 
 Live site: https://recipehub-client-gilt.vercel.app
->>>>>>> 7f1033a9899561e8b6c0f0e176bac4c8b5df6d18
 
 Server repository: https://github.com/mimdev14/recipehub_server.git
 
@@ -167,4 +166,4 @@ npm install
 npm run dev
 ```
 Create a `.env` file based on `.env.example` before running.
->>>>>>> 7f1033a9899561e8b6c0f0e176bac4c8b5df6d18
+
