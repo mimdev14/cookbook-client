@@ -2,7 +2,7 @@
 # 🍳 CookBook — Recipe Sharing Platform
 
 CookBook is a full-stack recipe-sharing platform where food enthusiasts can discover, share, save, purchase, and manage recipes.
-=======
+
 # RecipeHub — Recipe Sharing Platform
 
 Live site: https://recipehub-client-gilt.vercel.app
