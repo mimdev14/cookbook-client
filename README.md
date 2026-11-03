@@ -19,7 +19,7 @@ CookBook is a full-stack platform where food enthusiasts can create, share, disc
 - 🌟 Dynamic home page with Featured and Popular recipe sections and Framer Motion animation
 - 📱 Fully responsive design across mobile, tablet, and desktop
 
-<<<<<<< HEAD
+
 **Live Site:** [LIVE_CLIENT_URL](https://cookbook-client-gilt.vercel.app)
 
 **Server API:** [LIVE_SERVER_URL](https://cookbook-server-eight.vercel.app)
